@@ -1,0 +1,265 @@
+{
+   title: 'Main page',
+   bg: 'images/bg1.jpeg',
+   icon: 'mdi-home-outline', // home icon
+   groups: [
+      {
+         title: 'Front Door',
+         width: 2,
+         height: 3,
+         items: [
+            {
+               position: [0, 0],
+               width: 2,
+               type: TYPES.TEXT_LIST,
+               id: {}, // using empty object for an unknown id
+               state: false, // disable state element
+               list: [
+                  {
+                     title: 'Sun',
+                     icon: 'mdi-weather-sunny',
+                     value: '&sun.sun.state'
+                  }
+               ]
+            },
+            {
+               position: [0, 1], // [x, y]
+               width: 1,
+               type: TYPES.SENSOR,
+               id: 'updater.updater',
+               state: '@attributes.release_notes' // https://github.com/resoai/TileBoard/wiki/Templates
+            },
+            {
+               position: [1, 0],
+               type: TYPES.LOCK,
+               id: 'lock.front_door',
+               title: 'Front door',
+               states: {
+                  locked: "Locked",
+                  unlocked: "Unlocked"
+               },
+               icons: {
+                  locked: "mdi-lock",
+                  unlocked: "mdi-lock-open",
+               }
+            }
+         ]
+      },
+
+      {
+         title: 'Living Room',
+         width: 2,
+         height: 3,
+         items: [
+           {
+              position: [0, 0],
+              width: 2,
+              title: 'Living Room Lights',
+              //subtitle: 'Lounge',
+              id: 'light.living_room',
+              type: TYPES.LIGHT,
+              states: {
+                 on: "On",
+                 off: "Off"
+              },
+              icons: {
+                 on: "mdi-lightbulb-on",
+                 off: "mdi-lightbulb",
+              },
+              sliders: [
+                 {
+                    title: 'Brightness',
+                    field: 'brightness',
+                    max: 255,
+                    min: 0,
+                    step: 5,
+                    request: {
+                       type: "call_service",
+                       domain: "light",
+                       service: "turn_on",
+                       field: "brightness"
+                    }
+                 }
+              ]
+            },
+            {
+               position: [1, 0],
+               width: 1,
+               title: 'Ceiling lights',
+               subtitle: "Doesn't control the fan",
+               id: 'light.living_room_ceiling',
+               type: TYPES.LIGHT,
+               states: {
+                  on: "On",
+                  off: "Off"
+               },
+               icons: {
+                  on: "mdi-lightbulb-on",
+                  off: "mdi-lightbulb",
+               },
+               sliders: [
+                  {
+                     title: 'Brightness',
+                     field: 'brightness',
+                     max: 255,
+                     min: 0,
+                     step: 5,
+                     request: {
+                        type: "call_service",
+                        domain: "light",
+                        service: "turn_on",
+                        field: "brightness"
+                     }
+                  }
+               ]
+             },
+             {
+                position: [1, 1],
+                width: 1,
+                title: 'Black Lamp',
+                //subtitle: "Doesn't control the fan",
+                id: 'light.black_lamp_2',
+                type: TYPES.LIGHT,
+                states: {
+                   on: "On",
+                   off: "Off"
+                },
+                icons: {
+                   on: "mdi-lightbulb-on",
+                   off: "mdi-lightbulb",
+                },
+                sliders: [
+                   {
+                      title: 'Brightness',
+                      field: 'brightness',
+                      max: 255,
+                      min: 0,
+                      step: 5,
+                      request: {
+                         type: "call_service",
+                         domain: "light",
+                         service: "turn_on",
+                         field: "brightness"
+                      }
+                   }
+                ]
+              },
+              {
+                 position: [2, 0],
+                 width: 1,
+                 title: 'White Lamp',
+                 //subtitle: "Doesn't control the fan",
+                 id: 'light.white_lamp_2',
+                 type: TYPES.LIGHT,
+                 states: {
+                    on: "On",
+                    off: "Off"
+                 },
+                 icons: {
+                    on: "mdi-lightbulb-on",
+                    off: "mdi-lightbulb",
+                 },
+                 sliders: [
+                    {
+                       title: 'Brightness',
+                       field: 'brightness',
+                       max: 255,
+                       min: 0,
+                       step: 5,
+                       request: {
+                          type: "call_service",
+                          domain: "light",
+                          service: "turn_on",
+                          field: "brightness"
+                       }
+                    }
+                 ]
+               }
+         ]
+      },
+
+      {
+         title: 'Kitchen/Dinning Room',
+         width: 2,
+         height: 3,
+         items: [
+           {
+              position: [0, 0],
+              width: 2,
+              title: 'Kitchen Light',
+              //subtitle: "Doesn't control the fan",
+              id: 'light.kitchen',
+              type: TYPES.LIGHT,
+              states: {
+                 on: "On",
+                 off: "Off"
+              },
+              icons: {
+                 on: "mdi-lightbulb-on",
+                 off: "mdi-lightbulb",
+              },
+              sliders: [
+                 {
+                    title: 'Brightness',
+                    field: 'brightness',
+                    max: 255,
+                    min: 0,
+                    step: 5,
+                    request: {
+                       type: "call_service",
+                       domain: "light",
+                       service: "turn_on",
+                       field: "brightness"
+                    }
+                 }
+              ]
+            },
+            {
+               position: [1, 0],
+               width: 2,
+               title: 'Kitchen Light',
+               subtitle: "All Kitchen Lights",
+               id: 'light.kitchen_2',
+               type: TYPES.LIGHT,
+               states: {
+                  on: "On",
+                  off: "Off"
+               },
+               icons: {
+                  on: "mdi-lightbulb-on",
+                  off: "mdi-lightbulb",
+               },
+               sliders: [
+                  {
+                     title: 'Brightness',
+                     field: 'brightness',
+                     max: 255,
+                     min: 0,
+                     step: 5,
+                     request: {
+                        type: "call_service",
+                        domain: "light",
+                        service: "turn_on",
+                        field: "brightness"
+                     }
+                  },
+                  {
+                     title: 'Color temp',
+                     field: 'color_temp',
+                     max: 588,
+                     min: 153,
+                     step: 15,
+                     request: {
+                        type: "call_service",
+                        domain: "light",
+                        service: "turn_on",
+                        field: "color_temp"
+                     }
+                  }
+               ]
+             }
+
+         ]
+      }
+   ]
+}
